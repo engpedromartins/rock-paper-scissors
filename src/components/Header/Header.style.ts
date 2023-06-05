@@ -21,23 +21,35 @@ export const WrapBetValue = styled.div`
 `
 
 export const StyledNumberInput = styled.input`
-width: 100%;
-padding: 0.5rem;
-border: none;
-border-radius: 0.5rem;
-background-color: ${colors.secondaryDark};
-color: ${colors.gray};
-appearance: none;
-
-appearance: textfield; /* Remover controle de incremento */
-  -moz-appearance: textfield; /* Remover controle de incremento no Firefox */
+  width: 3.5rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: ${colors.secondaryDark};
+  color: ${colors.gray};
+  outline: none;
 
   &::-webkit-inner-spin-button,
   &::-webkit-outer-spin-button {
-    appearance: none; /* Ocultar a seta */
+    -webkit-appearance: none; /* Remover estilo personalizado da seta */
+    margin: 0; /* Remover espaço em branco */
   }
-
-&:focus {
-  outline: none;
-}
 `;
+
+export const Button = styled.div`
+background: transparent;
+border: none;
+padding: 1px;
+justify-content: center;
+align-items: center;
+margin: 0px;
+padding: 0px;
+`
+
+export const WrapButton = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+
+`
