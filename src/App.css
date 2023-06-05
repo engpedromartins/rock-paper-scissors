@@ -1,0 +1,18 @@
+.App {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.balance {
+  margin-bottom: 20px;
+}
+
+.choices {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.result {
+  margin-top: 20px;
+}
