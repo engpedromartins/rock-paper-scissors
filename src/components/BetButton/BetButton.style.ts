@@ -22,6 +22,8 @@ const Button = styled.button<ButtonProps>(({ title }) => {
   }
 
   const buttonStyle = {
+    minWidth: '150px',
+    minHeight: '100px',
     backgroundColor,
     color,
     border: `1px solid ${color}`,

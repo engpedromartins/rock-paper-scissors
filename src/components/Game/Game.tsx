@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Choice } from "../../types/interface";
 import BetButton from "../BetButton/BetButton";
+import { Button, Container, WrapButton } from "./Game.style";
 
 export default function Game() {
   const [balance, setBalance] = useState(5000);
@@ -51,8 +52,9 @@ export default function Game() {
     }
   };
   return (
-    <>
-      <div>
+    <Container>
+      <h3>PICK YOUR POSITIONS</h3>
+      <WrapButton>
         <BetButton
           onClick={placeBet}
           title={Choice.Rock} />
@@ -62,7 +64,10 @@ export default function Game() {
         <BetButton
           onClick={placeBet}
           title={Choice.Scissors} />
-      </div>
+      </WrapButton>
+      <Button onClick={() => { }}>
+        PLAY
+      </Button>
       {
         playerChoice && computerChoice && (
           <div className="result">
@@ -72,6 +77,6 @@ export default function Game() {
           </div>
         )
       }
-    </>
+    </Container>
   )
 }
