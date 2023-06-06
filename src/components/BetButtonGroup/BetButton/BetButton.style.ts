@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { Choice } from '../../types/interface';
-import colors from '../../common/style';
+import { Choice } from '../../../types/interface';
+import colors from '../../../common/style';
 
 interface ButtonProps {
   title: Choice;

@@ -12,10 +12,6 @@ export const Container = styled.div`
   gap: 1rem;
 `
 
-export const WrapButton = styled.div`
-  display: flex;
-  gap: 1rem;
-`
 export const Button = styled.button`
     min-width: 150px;
     background-color: ${colors.secondaryDark};

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Choice } from '../../types/interface';
 import { BetValue, Button } from './BetButton.style';
+import { Choice } from '../../../types/interface';
 
 interface BetButtonProps {
   title: Choice;

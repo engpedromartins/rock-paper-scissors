@@ -1,9 +1,18 @@
 import { useContext, useState } from "react";
 import { Choice, ResultStatus } from "../../types/interface";
-import BetButton from "../BetButton/BetButton";
-import { Button, Choices, Container, Content, Result, WrapButton, WrapResult, WrapScore, WrapStackChoices } from "./Game.style";
 import { BetContext } from "../../contexts/BetContext";
+import { BetButtonGroup } from "../BetButtonGroup/BetButtonGroup";
 
+import {
+  Button,
+  Choices,
+  Container,
+  Content,
+  Result,
+  WrapResult,
+  WrapScore,
+  WrapStackChoices
+} from "./Game.style";
 
 export default function Game() {
   const betContext = useContext(BetContext);
@@ -146,34 +155,13 @@ export default function Game() {
           </WrapScore>
         </WrapResult>
       }
-      <WrapButton>
-        <BetButton
-          selected={playerChoices.some((c) => c.choice === Choice.Rock)}
-          bet={bet}
-          onClick={placeBet}
-          title={Choice.Rock}
-          disabled={disabled}
-          playing={playing}
-
-        />
-        <BetButton
-          selected={playerChoices.some((c) => c.choice === Choice.Paper)}
-          bet={bet}
-          onClick={placeBet}
-          title={Choice.Paper}
-          disabled={disabled}
-          playing={playing}
-        />
-        <BetButton
-          selected={playerChoices.some((c) => c.choice === Choice.Scissors)}
-          bet={bet}
-          onClick={placeBet}
-          title={Choice.Scissors}
-          disabled={disabled}
-          playing={playing}
-
-        />
-      </WrapButton>
+      <BetButtonGroup
+        playerChoices={playerChoices}
+        bet={bet}
+        onClick={placeBet}
+        disabled={disabled}
+        playing={playing}
+      />
       <Button
         onClick={playing ? onPressClear : onPressPlay}
         disabled={disabled}>
