@@ -48,13 +48,6 @@ export default function Game() {
   };
 
   const determineResult = (computerChoice: Choice, betAmount: number) => {
-    if (balance < betAmount) {
-      setResult({
-        status: ResultStatus.NOT_ENOUGH_BALANCE,
-        description: 'Insufficient balance for the bet.'
-      });
-      return;
-    }
 
     const winConditions: [Choice, Choice][] = [
       [Choice.Rock, Choice.Scissors],
@@ -92,13 +85,20 @@ export default function Game() {
 
   const onPressPlay = () => {
     if (playerChoices.length === 0) return
-    setPlaying(true);
     let sum = 0
     playerChoices.forEach(({ bet }) => { sum += bet })
-    setBalance(balance - sum)
     setDisabled(true);
     const computerChoice = getRandomChoice();
+
+    if (balance < sum) {
+      alert('Insufficient balance for the bet.')
+      setDisabled(false);
+      return;
+    }
+
     setComputerChoice(computerChoice);
+    setPlaying(true);
+    setBalance(balance - sum)
     setTimeout(() => {
       determineResult(computerChoice, sum);
       setDisabled(false)
