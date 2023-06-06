@@ -7,6 +7,10 @@ export const Container = styled.div`
   justify-content: center;
   gap: 3rem;
   margin-bottom: 10rem;
+
+  @media (max-width: 420px) {
+    margin-bottom: 4rem;
+  }
 `
 export const WrapStackChoices = styled.div`
   display: flex;
@@ -15,4 +19,7 @@ export const WrapStackChoices = styled.div`
 export const Choices = styled.h1`
   color: ${colors.white};
   font-size: 3rem;
+  @media (max-width: 420px) {
+    font-size: 2rem;
+  }
 `
