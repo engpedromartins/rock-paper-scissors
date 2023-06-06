@@ -22,8 +22,13 @@ const Button = styled.button<ButtonProps>(({ title }) => {
   }
 
   const buttonStyle = {
-    minWidth: '150px',
-    minHeight: '100px',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+    gap: '.5rem',
+    alignItems: 'center',
+    minWidth: '160px',
+    minHeight: '115px',
     backgroundColor,
     color,
     border: `1px solid ${color}`,
@@ -39,4 +44,19 @@ const Button = styled.button<ButtonProps>(({ title }) => {
   return buttonStyle;
 });
 
-export { Button };
+const BetValue = styled.span`
+  font-size: 16px;
+  font-weight: bold;
+  background-color: ${colors.white};
+  border: 3px solid ${colors.blue};
+  color: ${colors.primaryDark};
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  padding: 8px 1px;
+  min-width: 40px;
+`;
+
+export { Button, BetValue };

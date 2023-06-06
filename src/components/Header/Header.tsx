@@ -12,7 +12,7 @@ const AppBar: React.FC<PropsAppBar> = React.memo(() => {
     return null;
   }
 
-  const { bet, setBet, balance } = betContext;
+  const { bet, setBet, balance, win } = betContext;
 
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     event.preventDefault();
@@ -53,7 +53,7 @@ const AppBar: React.FC<PropsAppBar> = React.memo(() => {
           </WrapButton>
         </WrapBetValue>
         <h3>WIN</h3>
-        <span>5000</span>
+        <span>{win}</span>
       </HeaderContent>
     </Header>
   );

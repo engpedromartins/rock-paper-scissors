@@ -1,23 +1,38 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Choice } from '../../types/interface';
-import { Button } from './BetButton.style';
+import { BetValue, Button } from './BetButton.style';
 
 interface BetButtonProps {
   title: Choice;
-  onClick: (choice: Choice) => void;
+  onClick: (choice: Choice, bet: number) => void;
+  selected: boolean;
+  bet: number;
+  disabled?: boolean;
+  playing: boolean
 }
 
 export default function BetButton(props: BetButtonProps) {
-  const { onClick, title } = props
+  const { onClick, title, selected, bet, disabled, playing } = props
+  const [isClicked, setIsClicked] = useState(selected);
+
+  useEffect(() => {
+    setIsClicked(selected);
+  }, [selected]);
 
   const handleClick = () => {
-    onClick(title as Choice);
+    if (playing) return;
+    onClick(title as Choice, bet);
+    setIsClicked(!isClicked);
   };
 
   return (
     <Button
       title={title}
-      onClick={handleClick}>
+      onClick={handleClick}
+      disabled={disabled}
+    >
+      {isClicked && <BetValue >{bet}</BetValue>}
       {title}
-    </Button >)
+    </Button>
+  )
 }

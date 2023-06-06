@@ -9,6 +9,8 @@ const colors = {
   secondaryDark: '#161616',
   gray: '#e3e3e3',
   gold: '#dab67d',
+  white: '#ffffff',
+  lightBlue: '#4f00ff'
 
 
 }
