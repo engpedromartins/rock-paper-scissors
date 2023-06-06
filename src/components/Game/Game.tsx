@@ -5,6 +5,7 @@ import { Button, Container } from "./Game.style";
 import { GameChoices } from "../GameChoices/GameChoices";
 import { BetButtonGroup } from "../BetButtonGroup/BetButtonGroup";
 import { GameResult } from "../GameResult/GameResult";
+import Loading from "../Loagind/Loading";
 
 export default function Game() {
   const betContext = useContext(BetContext);
@@ -141,7 +142,7 @@ export default function Game() {
       <Button
         onClick={playing ? onPressClear : onPressPlay}
         disabled={disabled}>
-        {playing ? 'CLEAR' : 'PLAY'}
+        {true ? <Loading /> : playing ? 'CLEAR' : 'PLAY'}
       </Button>
     </Container>
   )
