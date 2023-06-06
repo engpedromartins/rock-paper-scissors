@@ -5,14 +5,12 @@ import { BetButtonGroup } from "../BetButtonGroup/BetButtonGroup";
 
 import {
   Button,
-  Choices,
   Container,
-  Content,
   Result,
   WrapResult,
   WrapScore,
-  WrapStackChoices
 } from "./Game.style";
+import { GameChoices } from "../GameChoices/GameChoices";
 
 export default function Game() {
   const betContext = useContext(BetContext);
@@ -131,22 +129,12 @@ export default function Game() {
   return (
     <Container>
       {!playing && <h3>PICK YOUR POSITIONS</h3>}
-      {playing && !isResultValid(result) &&
-        <Content>
-          <WrapStackChoices>
-            {playerChoices.map(({ choice }) => {
-              return (
-                <Choices>
-                  {choice}
-                </Choices>
-              )
-            })}
-          </WrapStackChoices>
-          <h2>VS</h2>
-          <Choices>
-            {computerChoice}
-          </Choices>
-        </Content>}
+      <GameChoices
+        playerChoices={playerChoices}
+        computerChoice={computerChoice}
+        isResultValid={isResultValid(result)}
+        playing={playing}
+      />
       {isResultValid(result) &&
         <WrapResult>
           <Result color={result.status}>{`${optionWinnner} ${result.status}`}</Result>
