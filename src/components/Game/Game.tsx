@@ -147,5 +147,3 @@ export default function Game() {
     </Container>
   )
 }
-
-//todo colocar os valores com hover em cima dos botões
