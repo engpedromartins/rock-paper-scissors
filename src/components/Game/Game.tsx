@@ -142,7 +142,7 @@ export default function Game() {
       <Button
         onClick={playing ? onPressClear : onPressPlay}
         disabled={disabled}>
-        {true ? <Loading /> : playing ? 'CLEAR' : 'PLAY'}
+        {disabled ? <Loading /> : playing ? 'CLEAR' : 'PLAY'}
       </Button>
     </Container>
   )
