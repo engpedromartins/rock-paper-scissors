@@ -25,30 +25,3 @@ export const Button = styled.button`
     };
     margin-top: 20px;
 `
-
-export const Result = styled.div`
-  color: ${({ color }) => (color === 'WON' ? colors.green : colors.red)};
-  font-size: 3rem;
-`
-
-export const WrapResult = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 10rem;
-  text-align: center; 
-
-  h2{
-    text-align: center;
-  }
-
-  span{
-    font-size: 1.5rem;
-    color: ${colors.white};
-  }
-`
-export const WrapScore = styled.div`
-  display: flex;
-  gap: .5rem;
-`

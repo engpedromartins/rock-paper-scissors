@@ -1,16 +1,10 @@
 import { useContext, useState } from "react";
 import { Choice, ResultStatus } from "../../types/interface";
 import { BetContext } from "../../contexts/BetContext";
-import { BetButtonGroup } from "../BetButtonGroup/BetButtonGroup";
-
-import {
-  Button,
-  Container,
-  Result,
-  WrapResult,
-  WrapScore,
-} from "./Game.style";
+import { Button, Container } from "./Game.style";
 import { GameChoices } from "../GameChoices/GameChoices";
+import { BetButtonGroup } from "../BetButtonGroup/BetButtonGroup";
+import { GameResult } from "../GameResult/GameResult";
 
 export default function Game() {
   const betContext = useContext(BetContext);
@@ -29,26 +23,23 @@ export default function Game() {
   const placeBet = (choice: Choice) => {
     const updatedChoices: { choice: Choice; bet: number }[] = [...playerChoices];
 
-    // Verificar se a opção já foi selecionada
+    // Check if the option has already been selected
     const existingChoiceIndex = updatedChoices.findIndex((c) => c.choice === choice);
 
     if (existingChoiceIndex !== -1) {
-      // Remover a opção existente e subtrair seu valor do betAmount
+      // Remove the existing option
       const removedChoice = updatedChoices.splice(existingChoiceIndex, 1)[0];
       setPlayerChoices([...updatedChoices]);
     } else if (updatedChoices.length === 2) {
-      // Remover a primeira opção e seu valor
-      const removedChoice = updatedChoices.shift();
+      // Remove the first option
+      updatedChoices.shift();
 
-      // Adicionar a nova opção e seu valor
+      // Add new option
       setPlayerChoices([...updatedChoices, { choice, bet: betContext.bet }]);
     } else {
-      // Adicionar a nova opção e seu valor
       setPlayerChoices([...updatedChoices, { choice, bet: betContext.bet }]);
     }
   };
-
-
 
   const getRandomChoice = (): Choice => {
     const choices = [Choice.Rock, Choice.Paper, Choice.Scissors];
@@ -57,7 +48,6 @@ export default function Game() {
   };
 
   const determineResult = (computerChoice: Choice, betAmount: number) => {
-
     if (balance < betAmount) {
       setResult({
         status: ResultStatus.NOT_ENOUGH_BALANCE,
@@ -135,14 +125,12 @@ export default function Game() {
         isResultValid={isResultValid(result)}
         playing={playing}
       />
-      {isResultValid(result) &&
-        <WrapResult>
-          <Result color={result.status}>{`${optionWinnner} ${result.status}`}</Result>
-          <WrapScore>
-            <h2>{result.description}</h2> <span>{win.toFixed(2)}</span>
-          </WrapScore>
-        </WrapResult>
-      }
+      <GameResult
+        isResultValid={isResultValid(result)}
+        optionWinnner={optionWinnner}
+        result={result}
+        win={win}
+      />
       <BetButtonGroup
         playerChoices={playerChoices}
         bet={bet}
@@ -155,7 +143,6 @@ export default function Game() {
         disabled={disabled}>
         {playing ? 'CLEAR' : 'PLAY'}
       </Button>
-
     </Container>
   )
 }
