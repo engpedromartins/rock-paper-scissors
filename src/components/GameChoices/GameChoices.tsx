@@ -4,7 +4,7 @@ import { Choice } from "../../types/interface";
 type GameChoicesProps = {
   playerChoices: { choice: Choice; bet: number }[];
   computerChoice: Choice | null;
-  isResultValid: boolean
+  isResultValid: boolean;
   playing: boolean;
 }
 
